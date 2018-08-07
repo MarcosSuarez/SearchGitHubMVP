@@ -49,29 +49,7 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
         loadingIndicator.layer.backgroundColor = UIColor.black.cgColor
         self.view.addSubview(loadingIndicator)
     }
-    /*
-    func loadData(from urlGitHub: String) {
-        
-        APIGitHub.repositories(by: urlGitHub) { (nextRepositories) in
-            
-            print("total nuevos repositorios Agregados: ", nextRepositories.count)
-            
-            nextRepositories.forEach({ (repository) in
-                let data = DataRepoCell(with: repository)
-                self.repositories.append(data)
-            })
-            
-            print("TOTAL repositorios en móvil: ",self.repositories.count)
-            
-            // Update data in Cell
-            DispatchQueue.main.async {
-                self.loadingIndicator.stopAnimating()
-                self.loadingIndicator.isHidden = true
-                self.tableView.reloadData()
-            }
-        }
-    }
-    */
+
     // MARK: - Safari
     private func goRepositoryDetail(url: String) {
         
@@ -97,12 +75,7 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         
         let gitAddress = isPressed ? searchText + APIGitHub.publicProyect : searchText
-        
         presenter?.loadData(from: gitAddress)
-        //loadData(from: gitAddress)
-        
-        //loadingIndicator.isHidden = false
-        //loadingIndicator.startAnimating()
     }
     
     var isPressed:Bool = false
@@ -166,12 +139,6 @@ extension RepositoriesTableViewController: UITableViewDelegate, UITableViewDataS
         if  indexPath.row == Int(repositories.count * 3/4) {
             presenter?.updatePagination()
         }
-//        if  indexPath.row == Int(repositories.count * 3/4),
-//            APIGitHub.pagination.nextPage < APIGitHub.pagination.lastPage {
-//            // add new page
-//            presenter?.loadData(from: APIGitHub.pagination.nextURLpage)
-//            //loadData(from: APIGitHub.pagination.nextURLpage)
-//        }
         return cell
     }
     
