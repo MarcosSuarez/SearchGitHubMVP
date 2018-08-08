@@ -24,7 +24,7 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
     override func viewDidLoad() {
         
         // Presenter
-        presenter = RepositoriesPresenter(delegate: self)
+        presenter = RepositoriesPresenter(withView: self)
         
         // Add background image
         let imageBackground = UIImageView(image: UIImage(named: "github-octocat.png"))

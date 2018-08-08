@@ -20,8 +20,8 @@ class RepositoriesPresenter {
     
     var hasFilterProyects: Bool = false
     
-    init(delegate: RepositoriesDelegate) {
-        self.delegate = delegate
+    init(withView: RepositoriesDelegate) {
+        self.delegate = withView
     }
     
     func search(by text:String) {
