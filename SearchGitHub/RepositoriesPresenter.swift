@@ -49,6 +49,19 @@ class RepositoriesPresenter {
     
     func loadData(from urlGitHub: String) {
         
+        let getData = GetNewRepoUseCase(gitURL: urlGitHub)
+        
+        getData.execute { (dataGH) in
+            
+            DispatchQueue.main.async {
+                self.delegate?.resultFor(repositories: dataGH)
+                self.delegate?.finishSearch()
+            }
+        }
+    }
+    /*
+    func loadData(from urlGitHub: String) {
+        
         var repositories = [DataRepoCell]()
         
         APIGitHub.repositories(by: urlGitHub) { (nextRepositories) in
@@ -69,4 +82,5 @@ class RepositoriesPresenter {
             
         }
     }
+ */
 }
