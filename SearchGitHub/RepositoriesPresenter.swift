@@ -28,7 +28,7 @@ class RepositoriesPresenter {
         
         delegate?.beginSearch()
         
-        guard text.isEmpty else {
+        guard !text.isEmpty else {
             delegate?.finishSearch()
             return
         }

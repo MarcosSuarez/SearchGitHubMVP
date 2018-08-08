@@ -69,13 +69,12 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
         searchBar.resignFirstResponder()
         
         repositories.removeAll()
-        APIGitHub.resetPagination()
         tableView.reloadData()
         
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         
         let gitAddress = isPressed ? searchText + APIGitHub.publicProyect : searchText
-        presenter?.loadData(from: gitAddress)
+        presenter?.search(by: gitAddress)
     }
     
     var isPressed:Bool = false
