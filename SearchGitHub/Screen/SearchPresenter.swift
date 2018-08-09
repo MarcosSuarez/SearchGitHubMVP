@@ -8,20 +8,20 @@
 
 import Foundation
 
-protocol RepositoriesDelegate {
+protocol SearchPresenterProtocol {
     func beginSearch()
     func finishSearch()
     func resultFor(repositories: [DataClient])
     func nextPage(repositories: [DataClient])
 }
 
-class RepositoriesPresenter {
+class SearchPresenter {
     
-    var delegate: RepositoriesDelegate?
+    var delegate: SearchPresenterProtocol?
     
     var hasFilterProyects: Bool = false
     
-    init(withView: RepositoriesDelegate) {
+    init(withView: SearchPresenterProtocol) {
         self.delegate = withView
     }
     

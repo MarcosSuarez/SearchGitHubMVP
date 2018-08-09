@@ -11,7 +11,7 @@ import SafariServices
 
 class SearchTableVC: UIViewController, SFSafariViewControllerDelegate {
     
-    var presenter: RepositoriesPresenter?
+    var presenter: SearchPresenter?
     
     var repositories = [DataClient]()
     
@@ -24,7 +24,7 @@ class SearchTableVC: UIViewController, SFSafariViewControllerDelegate {
     override func viewDidLoad() {
         
         // Presenter
-        presenter = RepositoriesPresenter(withView: self)
+        presenter = SearchPresenter(withView: self)
         
         // Add background image
         let imageBackground = UIImageView(image: UIImage(named: "github-octocat.png"))
@@ -88,7 +88,7 @@ class SearchTableVC: UIViewController, SFSafariViewControllerDelegate {
     }
 }
 
-extension SearchTableVC: RepositoriesDelegate {
+extension SearchTableVC: SearchPresenterProtocol {
     
     func nextPage(repositories: [DataClient]) {
         self.repositories += repositories
