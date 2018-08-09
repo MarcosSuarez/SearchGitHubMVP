@@ -12,8 +12,11 @@ import Foundation
 class RepositoryMemory {
     
     typealias T = [DataClient]
-    typealias R = [DataClient]
+    typealias R = Bool
     
+    let api = APIGitHub.shared
+    var textSearch: String = ""
+    var filter: APIGitHub.GHFilters = .none
     
 }
 
@@ -22,13 +25,20 @@ extension RepositoryMemory: Repository {
     func get(completionHandler: @escaping (Transaction<[DataClient]?>) -> ()) {
         
         print("Se está solicitando datos.")
-        completionHandler( Transaction.success([]) )
+        
+        api.search(byText: textSearch, filter: filter) { (arrayDataGitHub) in
+            
+            let arrayClient = arrayDataGitHub.map({ (dataGitHub) -> DataClient in
+                return DataClient(with: dataGitHub)
+            })
+            completionHandler( Transaction.success(arrayClient) )
+        }
     }
     
-    func set(element: [DataClient], completionHandler: @escaping (Transaction<[DataClient]?>) -> ()) {
+    func set(element: [DataClient], completionHandler: @escaping (Transaction<Bool?>) -> ()) {
         
         print("se esta solicitando cambio de la data")
-        completionHandler( Transaction.success([]) )
+        completionHandler( Transaction.success(true) )
     }
     
     func clear() {
