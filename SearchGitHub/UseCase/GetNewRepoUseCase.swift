@@ -11,9 +11,11 @@ import Foundation
 class GetNewRepoUseCase {
     
     private let searchTerm:String
+    private let filter:GHFilters
     
-    init(withSearchTerm searchTerm:String, withFilter: APIGitHub.GHFilters) {
+    init(withSearchTerm searchTerm:String, withFilter: GHFilters) {
         self.searchTerm = searchTerm
+        self.filter = withFilter
     }
     
     func execute(completionHandler: @escaping ( ([DataClient]) -> Void ) ) {
@@ -22,7 +24,7 @@ class GetNewRepoUseCase {
         
         APIGitHub.shared.resetPagination()
         
-        APIGitHub.shared.search(byText: searchTerm, filter: .none) { (nextRepositories) in
+        APIGitHub.shared.search(byText: searchTerm, filter: filter) { (nextRepositories) in
 
             print("total nuevos repositorios Agregados: ", nextRepositories.count)
             

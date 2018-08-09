@@ -39,7 +39,7 @@ struct GHOwner: Codable {
 protocol ClientProtocol {
     func getNextPage() -> String
     func getPreviousPage()-> String
-    func search(byText: String, filter: APIGitHub.GHFilters, completion: @escaping ([GHRepository])-> Void)
+    func search(byText: String, filter: GHFilters, completion: @escaping ([GHRepository])-> Void)
 }
 
 
@@ -47,12 +47,7 @@ protocol ClientProtocol {
 class APIGitHub {
     
     static var shared = APIGitHub()
-    
-    enum GHFilters: String {
-        case none = ""
-        case publicProyects = "+has_projects"
-    }
-    
+
     struct GHPagination {
         
         var nextPage:Int = 1
@@ -66,7 +61,6 @@ class APIGitHub {
     
     private static let basePath = "https://api.github.com/"
     private static let searchRepo = "search/repositories?q="
-    static let publicProyect = "+has_projects"
     
     //static var withPublicProyect:Bool = false
     var isLoading = false
@@ -177,7 +171,7 @@ extension APIGitHub: ClientProtocol {
     }
     
     /// Search repositories by String.
-    func search(byText: String, filter: APIGitHub.GHFilters, completion: @escaping ([GHRepository]) -> Void) {
+    func search(byText: String, filter: GHFilters, completion: @escaping ([GHRepository]) -> Void) {
         
         let textSearch = byText.replacingOccurrences(of: " ", with: "+")
         

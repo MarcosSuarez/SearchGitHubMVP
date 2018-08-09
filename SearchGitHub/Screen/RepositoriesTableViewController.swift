@@ -73,7 +73,7 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
         
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         
-        let filter:APIGitHub.GHFilters = isPressed ? .publicProyects : .none
+        let filter:GHFilters = isPressed ? .publicProyects : .none
         
         presenter?.search(by: searchText, filter: filter)
     }

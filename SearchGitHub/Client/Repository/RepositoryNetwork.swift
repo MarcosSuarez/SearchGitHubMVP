@@ -16,7 +16,7 @@ class RepositoryNetwork {
     
     let api = APIGitHub.shared
     var textSearch: String = ""
-    var filter: APIGitHub.GHFilters = .none
+    var filter: GHFilters = .none
     
 }
 

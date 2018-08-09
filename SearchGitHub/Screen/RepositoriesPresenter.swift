@@ -25,7 +25,7 @@ class RepositoriesPresenter {
         self.delegate = withView
     }
     
-    func search(by text:String, filter: APIGitHub.GHFilters) {
+    func search(by text:String, filter: GHFilters) {
         
         delegate?.beginSearch()
         
