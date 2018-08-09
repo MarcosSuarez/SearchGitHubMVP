@@ -161,9 +161,6 @@ class APIGitHub {
                 }
             })
         }
-        
-        print(pagination)
-        
     } // End setupPagination
 }
 
