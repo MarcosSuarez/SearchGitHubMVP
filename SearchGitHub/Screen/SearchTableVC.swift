@@ -9,7 +9,7 @@
 import UIKit
 import SafariServices
 
-class RepositoriesTableViewController: UIViewController, SFSafariViewControllerDelegate {
+class SearchTableVC: UIViewController, SFSafariViewControllerDelegate {
     
     var presenter: RepositoriesPresenter?
     
@@ -88,7 +88,7 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
     }
 }
 
-extension RepositoriesTableViewController: RepositoriesDelegate {
+extension SearchTableVC: RepositoriesDelegate {
     
     func nextPage(repositories: [DataClient]) {
         self.repositories += repositories
@@ -118,7 +118,7 @@ extension RepositoriesTableViewController: RepositoriesDelegate {
     
 }
 
-extension RepositoriesTableViewController: UITableViewDelegate, UITableViewDataSource {
+extension SearchTableVC: UITableViewDelegate, UITableViewDataSource {
     
     // MARK: - Table view data source
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -153,7 +153,7 @@ extension RepositoriesTableViewController: UITableViewDelegate, UITableViewDataS
 }
 
 //MARK: - Search bar
-extension RepositoriesTableViewController: UISearchBarDelegate {
+extension SearchTableVC: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         startSearch()

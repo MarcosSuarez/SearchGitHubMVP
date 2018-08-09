@@ -15,7 +15,7 @@
         <!--REPOSITORIES-->
         <scene sceneID="ka9-4h-2Xd">
             <objects>
-                <viewController id="iX1-ef-kkh" customClass="RepositoriesTableViewController" customModule="SearchGitHubMVP" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iX1-ef-kkh" customClass="SearchTableVC" customModule="SearchGitHubMVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="csc-OB-egW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
