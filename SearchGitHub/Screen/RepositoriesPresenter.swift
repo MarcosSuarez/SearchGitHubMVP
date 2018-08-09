@@ -45,16 +45,11 @@ class RepositoriesPresenter {
     
     func updatePagination() {
         
-        // Control page.
-        if !APIGitHub.shared.isLoading, APIGitHub.shared.pagination.nextPage < APIGitHub.shared.pagination.lastPage {
-            // add new page
-            GetRepoNextPageUseCase().execute { (arrayClient) in
-                
-                DispatchQueue.main.async {
-                    self.delegate?.nextPage(repositories: arrayClient)
-                    self.delegate?.finishSearch()
-                }
-                
+        GetRepoNextPageUseCase().execute { (arrayClient) in
+            
+            DispatchQueue.main.async {
+                self.delegate?.nextPage(repositories: arrayClient)
+                self.delegate?.finishSearch()
             }
         }
     }
