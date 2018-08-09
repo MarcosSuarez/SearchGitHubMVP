@@ -20,8 +20,10 @@ class GetNewRepoUseCase {
         
         var repos = [DataClient]()
         
-        APIGitHub.repositories(by: urlGitHub) { (nextRepositories) in
-            
+        //APIGitHub.repositories(by: urlGitHub) { (nextRepositories) in
+        
+        APIGitHub.share.search(byText: urlGitHub, filter: .none) { (nextRepositories) in
+
             print("total nuevos repositorios Agregados: ", nextRepositories.count)
             
             nextRepositories.forEach({ (repository) in

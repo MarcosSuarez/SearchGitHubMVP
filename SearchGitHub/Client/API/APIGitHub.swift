@@ -35,9 +35,18 @@ struct GHOwner: Codable {
     let html_url: String? // User github Web
 }
 
+/// API Protocol
+protocol ClientProtocol {
+    func getNextPage() -> String
+    func getPreviousPage()-> String
+    func search(byText: String, filter: APIGitHub.GHFilters, completion: @escaping ([GHRepository])-> Void)
+}
+
 
 /// API to request information from GitHub
 class APIGitHub {
+    
+    static var share = APIGitHub()
     
     enum GHFilters: String {
         case none = ""
@@ -66,6 +75,7 @@ class APIGitHub {
     
     private init() {}
     
+    /*
     /// Search repositories by String.
     static func repositories(by: String, completion: @escaping ([GHRepository])-> Void) {
         
@@ -101,6 +111,7 @@ class APIGitHub {
             }
             }.resume()
     }
+    */
     
     static func resetPagination() {
         pagination = GHPagination()
@@ -154,4 +165,50 @@ class APIGitHub {
         print(pagination)
         
     } // End setupPagination
+}
+
+extension APIGitHub: ClientProtocol {
+    
+    /// get string with URL next page.
+    func getNextPage() -> String {
+        return APIGitHub.pagination.nextURLpage
+    }
+    
+    /// get string with URL previous page.
+    func getPreviousPage() -> String {
+        return APIGitHub.pagination.previosURLpage
+    }
+    
+    /// Search repositories by String.
+    func search(byText: String, filter: APIGitHub.GHFilters, completion: @escaping ([GHRepository]) -> Void) {
+        
+        let textSearch = byText.replacingOccurrences(of: " ", with: "+")
+        
+        guard let url = URL(string: APIGitHub.basePath + APIGitHub.searchRepo + textSearch + filter.rawValue) else { completion([]); return }
+        
+        APIGitHub.isLoading = true
+        
+        URLSession.shared.dataTask(with: url) { (data:Data?, response: URLResponse?, error: Error?) in
+            
+            APIGitHub.isLoading = false
+            
+            guard error == nil else {
+                print("--- request failed: \n",error ?? "Error hasn't description")
+                completion([])
+                return
+            }
+            
+            APIGitHub.setupPagination(response: response, textSearch: textSearch)
+            
+            if let data = data {
+                do {
+                    let decoder = JSONDecoder()
+                    let myStruct = try decoder.decode(GHSearchRepo.self, from: data)
+                    completion(myStruct.items)
+                } catch {
+                    print("--- Error when decoding: ",error.localizedDescription)
+                }
+            }
+            }.resume()
+    }
 }
