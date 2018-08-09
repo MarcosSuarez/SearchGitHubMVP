@@ -18,7 +18,7 @@ class RepoCell: UITableViewCell {
     @IBOutlet weak var iconProjects: UIImageView!
     
     
-    func load(repo: DataRepoCell) {
+    func load(repo: DataClient) {
         
         // Find Avatar.
         avatar.image = repo.avatar

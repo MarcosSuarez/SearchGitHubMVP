@@ -12,7 +12,7 @@ class GetReposUseCase {
     
     init() {}
     
-    func execute( completionHandler: @escaping ([DataRepoCell]) -> Void ) {
+    func execute( completionHandler: @escaping ([DataClient]) -> Void ) {
         
     }
 }

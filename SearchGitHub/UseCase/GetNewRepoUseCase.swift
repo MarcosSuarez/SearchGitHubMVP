@@ -16,16 +16,16 @@ class GetNewRepoUseCase {
         self.urlGitHub = gitURL
     }
     
-    func execute(completionHandler: @escaping ( ([DataRepoCell]) -> Void ) ) {
+    func execute(completionHandler: @escaping ( ([DataClient]) -> Void ) ) {
         
-        var repos = [DataRepoCell]()
+        var repos = [DataClient]()
         
         APIGitHub.repositories(by: urlGitHub) { (nextRepositories) in
             
             print("total nuevos repositorios Agregados: ", nextRepositories.count)
             
             nextRepositories.forEach({ (repository) in
-                let data = DataRepoCell(with: repository)
+                let data = DataClient(with: repository)
                 repos.append(data)
             })
             

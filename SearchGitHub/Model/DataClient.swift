@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct DataRepoCell {
+struct DataClient {
     var username: String
     var avatar:UIImage
     
@@ -43,7 +43,7 @@ struct DataRepoCell {
     }
 }
 
-extension DataRepoCell {
+extension DataClient {
     init(with repo: GHRepository) {
         
         username = repo.owner?.login ?? ""
@@ -52,7 +52,7 @@ extension DataRepoCell {
         repoAddress = repo.html_url ?? ""
         hasIconProyect = repo.has_projects ?? false
         
-        lastUpdate = DataRepoCell.intervalTimeFrom(date: repo.pushed_at)
+        lastUpdate = DataClient.intervalTimeFrom(date: repo.pushed_at)
 
         // Find Avatar.
         let url = URL(string: (repo.owner?.avatar_url)!)

@@ -11,7 +11,7 @@ import Foundation
 protocol RepositoriesDelegate {
     func beginSearch()
     func finishSearch()
-    func resultFor(repositories: [DataRepoCell])
+    func resultFor(repositories: [DataClient])
 }
 
 class RepositoriesPresenter {
@@ -24,7 +24,7 @@ class RepositoriesPresenter {
         self.delegate = withView
     }
     
-    func search(by text:String) {
+    func search(by text:String, filter: APIGitHub.GHFilters) {
         
         delegate?.beginSearch()
         
