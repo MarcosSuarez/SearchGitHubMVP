@@ -12,6 +12,7 @@ protocol RepositoriesDelegate {
     func beginSearch()
     func finishSearch()
     func resultFor(repositories: [DataClient])
+    func nextPage(repositories: [DataClient])
 }
 
 class RepositoriesPresenter {
@@ -33,54 +34,28 @@ class RepositoriesPresenter {
             return
         }
         
-        APIGitHub.shared.resetPagination()
-        
-        let urlGit = hasFilterProyects ? text + APIGitHub.publicProyect : text
-        loadData(from: urlGit)
+        GetNewRepoUseCase(withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
+            
+            DispatchQueue.main.async {
+                self.delegate?.resultFor(repositories: arrayDataClient)
+                self.delegate?.finishSearch()
+            }
+        }
     }
     
     func updatePagination() {
+        
         // Control page.
         if !APIGitHub.shared.isLoading, APIGitHub.shared.pagination.nextPage < APIGitHub.shared.pagination.lastPage {
             // add new page
-            loadData(from: APIGitHub.shared.pagination.nextURLpage)
-        }
-    }
-    
-    func loadData(from urlGitHub: String) {
-        
-        let getData = GetNewRepoUseCase(gitURL: urlGitHub)
-        
-        getData.execute { (dataGH) in
-            
-            DispatchQueue.main.async {
-                self.delegate?.resultFor(repositories: dataGH)
-                self.delegate?.finishSearch()
+            GetRepoNextPageUseCase().execute { (arrayClient) in
+                
+                DispatchQueue.main.async {
+                    self.delegate?.nextPage(repositories: arrayClient)
+                    self.delegate?.finishSearch()
+                }
+                
             }
         }
     }
-    /*
-    func loadData(from urlGitHub: String) {
-        
-        var repositories = [DataRepoCell]()
-        
-        APIGitHub.repositories(by: urlGitHub) { (nextRepositories) in
-            
-            print("total nuevos repositorios Agregados: ", nextRepositories.count)
-            
-            nextRepositories.forEach({ (repository) in
-                let data = DataRepoCell(with: repository)
-                repositories.append(data)
-            })
-            
-            print("TOTAL repositorios en móvil: ",repositories.count)
-            
-            DispatchQueue.main.async {
-                self.delegate?.resultFor(repositories: repositories)
-                self.delegate?.finishSearch()
-            }
-            
-        }
-    }
- */
 }

@@ -10,17 +10,19 @@ import Foundation
 
 class GetNewRepoUseCase {
     
-    let urlGitHub:String
+    private let searchTerm:String
     
-    init(gitURL: String) {
-        self.urlGitHub = gitURL
+    init(withSearchTerm searchTerm:String, withFilter: APIGitHub.GHFilters) {
+        self.searchTerm = searchTerm
     }
     
     func execute(completionHandler: @escaping ( ([DataClient]) -> Void ) ) {
         
         var repos = [DataClient]()
         
-        APIGitHub.shared.search(byText: urlGitHub, filter: .none) { (nextRepositories) in
+        APIGitHub.shared.resetPagination()
+        
+        APIGitHub.shared.search(byText: searchTerm, filter: .none) { (nextRepositories) in
 
             print("total nuevos repositorios Agregados: ", nextRepositories.count)
             
