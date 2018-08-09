@@ -19,7 +19,7 @@
 		17D2A7D320FCA8BF00EBA290 /* APIGitHub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17D2A7D220FCA8BF00EBA290 /* APIGitHub.swift */; };
 		8D1916C0211A05490003C5D0 /* RepositoriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1916BF211A05490003C5D0 /* RepositoriesPresenter.swift */; };
 		8D1E1601211C1E42002F9E90 /* RepositoriesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1600211C1E42002F9E90 /* RepositoriesTableViewController.swift */; };
-		8D1E1604211C411A002F9E90 /* RepositoryMemory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1603211C411A002F9E90 /* RepositoryMemory.swift */; };
+		8D1E1604211C411A002F9E90 /* RepositoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1603211C411A002F9E90 /* RepositoryNetwork.swift */; };
 		8D1E1606211C42C5002F9E90 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1605211C42C5002F9E90 /* Transaction.swift */; };
 		8D1E1608211C4307002F9E90 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1607211C4307002F9E90 /* Helpers.swift */; };
 		8D1E160A211C4361002F9E90 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1609211C4361002F9E90 /* Repository.swift */; };
@@ -63,7 +63,7 @@
 		17D2A7D220FCA8BF00EBA290 /* APIGitHub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIGitHub.swift; sourceTree = "<group>"; };
 		8D1916BF211A05490003C5D0 /* RepositoriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoriesPresenter.swift; sourceTree = "<group>"; };
 		8D1E1600211C1E42002F9E90 /* RepositoriesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoriesTableViewController.swift; sourceTree = "<group>"; };
-		8D1E1603211C411A002F9E90 /* RepositoryMemory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryMemory.swift; sourceTree = "<group>"; };
+		8D1E1603211C411A002F9E90 /* RepositoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNetwork.swift; sourceTree = "<group>"; };
 		8D1E1605211C42C5002F9E90 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		8D1E1607211C4307002F9E90 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8D1E1609211C4361002F9E90 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
@@ -209,7 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				8D1E1609211C4361002F9E90 /* Repository.swift */,
-				8D1E1603211C411A002F9E90 /* RepositoryMemory.swift */,
+				8D1E1603211C411A002F9E90 /* RepositoryNetwork.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -354,7 +354,7 @@
 				8D3EF23A211B21AA00D95DFA /* GetReposUseCase.swift in Sources */,
 				17D2A7A520FCA85100EBA290 /* AppDelegate.swift in Sources */,
 				8D1E1608211C4307002F9E90 /* Helpers.swift in Sources */,
-				8D1E1604211C411A002F9E90 /* RepositoryMemory.swift in Sources */,
+				8D1E1604211C411A002F9E90 /* RepositoryNetwork.swift in Sources */,
 				17D2A7D320FCA8BF00EBA290 /* APIGitHub.swift in Sources */,
 				1738BD6820FF3513004DA7E3 /* RepoCell.swift in Sources */,
 				17755227210234B60093D926 /* DataClient.swift in Sources */,

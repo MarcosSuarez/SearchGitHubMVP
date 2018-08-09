@@ -9,7 +9,7 @@
 import Foundation
 
 
-class RepositoryMemory {
+class RepositoryNetwork {
     
     typealias T = [DataClient]
     typealias R = Bool
@@ -20,7 +20,7 @@ class RepositoryMemory {
     
 }
 
-extension RepositoryMemory: Repository {
+extension RepositoryNetwork: Repository {
     
     func get(completionHandler: @escaping (Transaction<[DataClient]?>) -> ()) {
         
