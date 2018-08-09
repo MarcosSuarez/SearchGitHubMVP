@@ -15,7 +15,7 @@
         <!--REPOSITORIES-->
         <scene sceneID="ka9-4h-2Xd">
             <objects>
-                <viewController id="iX1-ef-kkh" customClass="RepositoriesTableViewController" customModule="SearchGitHub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iX1-ef-kkh" customClass="RepositoriesTableViewController" customModule="SearchGitHubMVP" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="csc-OB-egW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -50,7 +50,7 @@
                                 <rect key="frame" x="0.0" y="120" width="375" height="547"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="repoCell" rowHeight="75" id="BnF-NT-Ckd" customClass="RepoCell" customModule="SearchGitHub" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="repoCell" rowHeight="75" id="BnF-NT-Ckd" customClass="RepoCell" customModule="SearchGitHubMVP" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BnF-NT-Ckd" id="3nj-bq-ENf">
