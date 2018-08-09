@@ -33,7 +33,7 @@ class RepositoriesPresenter {
             return
         }
         
-        APIGitHub.resetPagination()
+        APIGitHub.shared.resetPagination()
         
         let urlGit = hasFilterProyects ? text + APIGitHub.publicProyect : text
         loadData(from: urlGit)
@@ -41,9 +41,9 @@ class RepositoriesPresenter {
     
     func updatePagination() {
         // Control page.
-        if !APIGitHub.isLoading, APIGitHub.pagination.nextPage < APIGitHub.pagination.lastPage {
+        if !APIGitHub.shared.isLoading, APIGitHub.shared.pagination.nextPage < APIGitHub.shared.pagination.lastPage {
             // add new page
-            loadData(from: APIGitHub.pagination.nextURLpage)
+            loadData(from: APIGitHub.shared.pagination.nextURLpage)
         }
     }
     
