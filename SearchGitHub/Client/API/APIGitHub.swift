@@ -35,9 +35,14 @@ struct GHOwner: Codable {
     let html_url: String? // User github Web
 }
 
+
 /// API to request information from GitHub
 class APIGitHub {
     
+    enum GHFilters: String {
+        case none = ""
+        case publicProyects = "+has_projects"
+    }
     
     struct GHPagination {
         
