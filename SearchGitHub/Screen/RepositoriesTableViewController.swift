@@ -13,7 +13,7 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
     
     var presenter: RepositoriesPresenter?
     
-    var repositories = [DataRepoCell]()
+    var repositories = [DataClient]()
     
     var loadingIndicator = UIActivityIndicatorView()
     
@@ -74,7 +74,8 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
         guard let searchText = searchBar.text, !searchText.isEmpty else { return }
         
         let gitAddress = isPressed ? searchText + APIGitHub.publicProyect : searchText
-        presenter?.search(by: gitAddress)
+        
+        presenter?.search(by: gitAddress, filter: .publicProyects)
     }
     
     var isPressed:Bool = false
@@ -89,7 +90,7 @@ class RepositoriesTableViewController: UIViewController, SFSafariViewControllerD
 
 extension RepositoriesTableViewController: RepositoriesDelegate {
     
-    func resultFor(repositories: [DataRepoCell]) {
+    func resultFor(repositories: [DataClient]) {
         self.repositories += repositories
        
     }
