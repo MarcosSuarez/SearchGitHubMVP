@@ -8,33 +8,6 @@
 
 import Foundation
 
-/// response struct of GitHub
-struct GHSearchRepo: Codable {
-    let total_count: Int
-    let incomplete_results: Bool
-    let items: [GHRepository]
-}
-
-/// repository structure
-struct GHRepository: Codable {
-    let name: String? // repository name
-    let full_name: String? // "user login / repository name"
-    let owner: GHOwner?
-    let created_at: String? //"created_at": "2016-09-19T19:31:57Z",
-    let updated_at: String? //"updated_at": "2016-09-19T19:35:15Z",
-    let pushed_at: String?
-    let language: String? //"language": "Swift"
-    let html_url: String? // Repository Web
-    let description: String?
-    let has_projects: Bool?
-}
-
-struct GHOwner: Codable {
-    let login: String? // User login
-    let avatar_url: String? // URL user avatar
-    let html_url: String? // User github Web
-}
-
 /// API Protocol
 protocol ClientProtocol {
     func getNextPage() -> String
@@ -68,44 +41,6 @@ class APIGitHub {
     var pagination = GHPagination()
     
     private init() {}
-    
-    /*
-    /// Search repositories by String.
-    static func repositories(by: String, completion: @escaping ([GHRepository])-> Void) {
-        
-        let textSearch = by.replacingOccurrences(of: " ", with: "+")
-        
-        guard let url = URL(string: basePath + searchRepo + textSearch) else { completion([]); return }
-        print("URL: \n",url)
-        
-        isLoading = true
-        
-        URLSession.shared.dataTask(with: url) { (data:Data?, response: URLResponse?, error: Error?) in
-            
-            isLoading = false
-            
-            guard error == nil else {
-                print("--- request failed: \n",error ?? "Error hasn't description")
-                completion([])
-                return
-            }
-            
-            setupPagination(response: response, textSearch: textSearch)
-            
-            if let data = data {
-                do {
-                    let decoder = JSONDecoder()
-                    let myStruct = try decoder.decode(GHSearchRepo.self, from: data)
-                    print("Resultados Incompletos: ",myStruct.incomplete_results)
-                    print("Total repositorios en GitHUB: ",myStruct.total_count)
-                    completion(myStruct.items)
-                } catch {
-                    print("--- Error when decoding: ",error.localizedDescription)
-                }
-            }
-            }.resume()
-    }
-    */
     
     func resetPagination() {
         pagination = GHPagination()
