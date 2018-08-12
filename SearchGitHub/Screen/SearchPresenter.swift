@@ -34,7 +34,7 @@ class SearchPresenter {
             return
         }
         
-        GetNewRepoUseCase(withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
+        UseCaseGetNewRepo(withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
             
             DispatchQueue.main.async {
                 self.delegate?.resultFor(repositories: arrayDataClient)

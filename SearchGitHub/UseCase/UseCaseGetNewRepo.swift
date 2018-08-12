@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetNewRepoUseCase {
+class UseCaseGetNewRepo {
     
     private let searchTerm:String
     private let filter:GHFilters
