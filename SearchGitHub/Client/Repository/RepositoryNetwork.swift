@@ -28,15 +28,17 @@ extension RepositoryNetwork: Repository {
         
         api.search(byText: textSearch, filter: filter) { (arrayDataGitHub) in
             
+            // Convierto del modelo de Git al modelo de que requiere el presentador
             let arrayClient = arrayDataGitHub.map({ (dataGitHub) -> DataClient in
                 return DataClient(with: dataGitHub)
             })
+            
             completionHandler( Transaction.success(arrayClient) )
         }
     }
     
     func set(element: [DataClient], completionHandler: @escaping (Transaction<Bool?>) -> ()) {
-        
+
         print("se esta solicitando cambio de la data")
         completionHandler( Transaction.success(true) )
     }

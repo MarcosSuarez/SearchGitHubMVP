@@ -20,6 +20,22 @@ class GetNewRepoUseCase {
     
     func execute(completionHandler: @escaping ( ([DataClient]) -> Void ) ) {
         
+        // Llama al servicio y espera su respuesta para propagarla
+        let servicio = SearchService()
+        
+        servicio.search(searchTerm: searchTerm, filter: filter, completionHandler: { (transaction) in
+            
+            switch transaction {
+                
+            case .success(let data):
+                if let dataUnwrapped:[DataClient] = data {
+                    completionHandler(dataUnwrapped) }                
+            case .fail:
+                completionHandler([])
+            }
+        })
+        
+        /*
         var repos = [DataClient]()
         
         APIGitHub.shared.resetPagination()
@@ -32,10 +48,10 @@ class GetNewRepoUseCase {
                 let data = DataClient(with: repository)
                 repos.append(data)
             })
+        print("TOTAL repositorios en móvil: ",repos.count)
             
-            print("TOTAL repositorios en móvil: ",repos.count)
-            
-            completionHandler(repos)
+        completionHandler(repos)
         }
+        */
     }
 }

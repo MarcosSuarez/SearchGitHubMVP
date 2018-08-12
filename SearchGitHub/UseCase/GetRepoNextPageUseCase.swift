@@ -12,7 +12,9 @@ class GetRepoNextPageUseCase {
     
     init(){}
     
-    func execute( completionHandler: @escaping ([DataClient]) -> Void ) {
+    func execute(completionHandler: @escaping ([DataClient]) -> Void ) {
+    
+        // Llama al servicio SearchService y la respuesta la propaga.
         
     var repos = [DataClient]()
         

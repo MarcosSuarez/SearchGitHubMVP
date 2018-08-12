@@ -16,6 +16,25 @@ struct DataClient {
     var repoAddress: String
     var lastUpdate: String
     var hasIconProyect: Bool
+}
+
+extension DataClient {
+    init(with repo: GHRepository) {
+        
+        username = repo.owner?.login ?? ""
+        
+        repoName = repo.name ?? ""
+        repoAddress = repo.html_url ?? ""
+        hasIconProyect = repo.has_projects ?? false
+        
+        lastUpdate = DataClient.intervalTimeFrom(date: repo.pushed_at)
+
+        // Find Avatar.
+        let url = URL(string: (repo.owner?.avatar_url)!)
+        
+        let data = try? Data(contentsOf: url!)
+        self.avatar = UIImage(data: data!)!
+    }
     
     // Find time difference between today and the latest update.
     static private func intervalTimeFrom(date gitHubDate: String?) -> String {
@@ -40,24 +59,5 @@ struct DataClient {
         dateComponent.allowedUnits = [.year,.month,.day,.hour,.minute]
         
         return dateComponent.string(from: dateLastUpdate, to: Date())!
-    }
-}
-
-extension DataClient {
-    init(with repo: GHRepository) {
-        
-        username = repo.owner?.login ?? ""
-        
-        repoName = repo.name ?? ""
-        repoAddress = repo.html_url ?? ""
-        hasIconProyect = repo.has_projects ?? false
-        
-        lastUpdate = DataClient.intervalTimeFrom(date: repo.pushed_at)
-
-        // Find Avatar.
-        let url = URL(string: (repo.owner?.avatar_url)!)
-        
-        let data = try? Data(contentsOf: url!)
-        self.avatar = UIImage(data: data!)!
     }
 }
