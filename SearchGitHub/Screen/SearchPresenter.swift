@@ -45,7 +45,7 @@ class SearchPresenter {
     
     func updatePagination() {
         
-        GetRepoNextPageUseCase().execute { (arrayClient) in
+        UseCaseGetNextPage().execute { (arrayClient) in
             
             DispatchQueue.main.async {
                 self.delegate?.nextPage(repositories: arrayClient)

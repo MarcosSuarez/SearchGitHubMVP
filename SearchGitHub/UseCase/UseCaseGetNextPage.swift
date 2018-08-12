@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetRepoNextPageUseCase {
+class UseCaseGetNextPage {
     
     init(){}
     

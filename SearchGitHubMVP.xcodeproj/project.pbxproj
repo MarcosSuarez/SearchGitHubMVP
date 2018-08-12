@@ -29,7 +29,7 @@
 		8D1E3947211D70980096F841 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E3946211D70980096F841 /* SearchService.swift */; };
 		8D1E3949211D711D0096F841 /* SearchGitHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E3948211D711D0096F841 /* SearchGitHubModel.swift */; };
 		8D3EF238211B17C900D95DFA /* GetNewRepoUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3EF237211B17C900D95DFA /* GetNewRepoUseCase.swift */; };
-		8D3EF23A211B21AA00D95DFA /* GetRepoNextPageUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3EF239211B21AA00D95DFA /* GetRepoNextPageUseCase.swift */; };
+		8D3EF23A211B21AA00D95DFA /* UseCaseGetNextPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3EF239211B21AA00D95DFA /* UseCaseGetNextPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,7 +78,7 @@
 		8D1E3946211D70980096F841 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		8D1E3948211D711D0096F841 /* SearchGitHubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitHubModel.swift; sourceTree = "<group>"; };
 		8D3EF237211B17C900D95DFA /* GetNewRepoUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetNewRepoUseCase.swift; sourceTree = "<group>"; };
-		8D3EF239211B21AA00D95DFA /* GetRepoNextPageUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepoNextPageUseCase.swift; sourceTree = "<group>"; };
+		8D3EF239211B21AA00D95DFA /* UseCaseGetNextPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseGetNextPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -202,7 +202,7 @@
 		8D1E15FE211C11E1002F9E90 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
-				8D3EF239211B21AA00D95DFA /* GetRepoNextPageUseCase.swift */,
+				8D3EF239211B21AA00D95DFA /* UseCaseGetNextPage.swift */,
 				8D3EF237211B17C900D95DFA /* GetNewRepoUseCase.swift */,
 			);
 			path = UseCase;
@@ -386,7 +386,7 @@
 				1727219220FFB319000216E7 /* Extension.swift in Sources */,
 				8D1E3947211D70980096F841 /* SearchService.swift in Sources */,
 				8D1E3949211D711D0096F841 /* SearchGitHubModel.swift in Sources */,
-				8D3EF23A211B21AA00D95DFA /* GetRepoNextPageUseCase.swift in Sources */,
+				8D3EF23A211B21AA00D95DFA /* UseCaseGetNextPage.swift in Sources */,
 				8D1E160C211C6EBA002F9E90 /* Filter.swift in Sources */,
 				17D2A7A520FCA85100EBA290 /* AppDelegate.swift in Sources */,
 				8D1E1608211C4307002F9E90 /* Helpers.swift in Sources */,
