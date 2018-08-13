@@ -22,14 +22,13 @@
 		8D1E1604211C411A002F9E90 /* RepositoryNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1603211C411A002F9E90 /* RepositoryNetwork.swift */; };
 		8D1E1606211C42C5002F9E90 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1605211C42C5002F9E90 /* Transaction.swift */; };
 		8D1E1608211C4307002F9E90 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1607211C4307002F9E90 /* Helpers.swift */; };
-		8D1E160A211C4361002F9E90 /* Repository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E1609211C4361002F9E90 /* Repository.swift */; };
 		8D1E160C211C6EBA002F9E90 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E160B211C6EBA002F9E90 /* Filter.swift */; };
-		8D1E393F211D6CC00096F841 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E393E211D6CC00096F841 /* Model.swift */; };
 		8D1E3941211D6D2E0096F841 /* GitHubStruc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E3940211D6D2E0096F841 /* GitHubStruc.swift */; };
 		8D1E3947211D70980096F841 /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E3946211D70980096F841 /* SearchService.swift */; };
 		8D1E3949211D711D0096F841 /* SearchGitHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E3948211D711D0096F841 /* SearchGitHubModel.swift */; };
 		8D3EF238211B17C900D95DFA /* UseCaseGetNewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3EF237211B17C900D95DFA /* UseCaseGetNewRepo.swift */; };
 		8D3EF23A211B21AA00D95DFA /* UseCaseGetNextPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3EF239211B21AA00D95DFA /* UseCaseGetNextPage.swift */; };
+		8DF429C72121A84F00839766 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF429C62121A84F00839766 /* Pagination.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,14 +70,13 @@
 		8D1E1603211C411A002F9E90 /* RepositoryNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryNetwork.swift; sourceTree = "<group>"; };
 		8D1E1605211C42C5002F9E90 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		8D1E1607211C4307002F9E90 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
-		8D1E1609211C4361002F9E90 /* Repository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift; sourceTree = "<group>"; };
 		8D1E160B211C6EBA002F9E90 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		8D1E393E211D6CC00096F841 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		8D1E3940211D6D2E0096F841 /* GitHubStruc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubStruc.swift; sourceTree = "<group>"; };
 		8D1E3946211D70980096F841 /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		8D1E3948211D711D0096F841 /* SearchGitHubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitHubModel.swift; sourceTree = "<group>"; };
 		8D3EF237211B17C900D95DFA /* UseCaseGetNewRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseGetNewRepo.swift; sourceTree = "<group>"; };
 		8D3EF239211B21AA00D95DFA /* UseCaseGetNextPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseGetNextPage.swift; sourceTree = "<group>"; };
+		8DF429C62121A84F00839766 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -193,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				8D1E3942211D6E070096F841 /* Entity */,
-				8D1E393E211D6CC00096F841 /* Model.swift */,
 				8D1E3948211D711D0096F841 /* SearchGitHubModel.swift */,
 			);
 			path = Model;
@@ -220,7 +217,6 @@
 		8D1E1602211C3FD9002F9E90 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				8D1E1609211C4361002F9E90 /* Repository.swift */,
 				8D1E1603211C411A002F9E90 /* RepositoryNetwork.swift */,
 			);
 			path = Repository;
@@ -233,6 +229,7 @@
 				8D1E160B211C6EBA002F9E90 /* Filter.swift */,
 				17755226210234B60093D926 /* DataClient.swift */,
 				8D1E3940211D6D2E0096F841 /* GitHubStruc.swift */,
+				8DF429C62121A84F00839766 /* Pagination.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -377,11 +374,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D1E3941211D6D2E0096F841 /* GitHubStruc.swift in Sources */,
-				8D1E393F211D6CC00096F841 /* Model.swift in Sources */,
 				8D1E1606211C42C5002F9E90 /* Transaction.swift in Sources */,
 				8D3EF238211B17C900D95DFA /* UseCaseGetNewRepo.swift in Sources */,
+				8DF429C72121A84F00839766 /* Pagination.swift in Sources */,
 				8D1E1601211C1E42002F9E90 /* SearchTableVC.swift in Sources */,
-				8D1E160A211C4361002F9E90 /* Repository.swift in Sources */,
 				8D1916C0211A05490003C5D0 /* SearchPresenter.swift in Sources */,
 				1727219220FFB319000216E7 /* Extension.swift in Sources */,
 				8D1E3947211D70980096F841 /* SearchService.swift in Sources */,
@@ -567,7 +563,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8CMRPSP89R;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SearchGitHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -585,7 +581,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8CMRPSP89R;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = SearchGitHub/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

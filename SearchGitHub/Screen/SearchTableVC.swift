@@ -89,14 +89,25 @@ class SearchTableVC: UIViewController, SFSafariViewControllerDelegate {
 }
 
 extension SearchTableVC: SearchPresenterProtocol {
-    
+
     func nextPage(repositories: [DataClient]) {
         self.repositories += repositories
+        
+        print("TOTAL repositorios en móvil: ",repositories.count)
+        
+        print("página Anterior", APIGitHub.shared.pagination.previosPage)
+        print("página Siguiente", APIGitHub.shared.pagination.nextPage)
+        print("ultima página: ",APIGitHub.shared.pagination.lastPage)
     }
     
     
     func resultFor(repositories: [DataClient]) {
         self.repositories += repositories
+        print("TOTAL repositorios en móvil: ",repositories.count)
+        
+        print("página Anterior", APIGitHub.shared.pagination.previosPage)
+        print("página Siguiente", APIGitHub.shared.pagination.nextPage)
+        print("ultima página: ",APIGitHub.shared.pagination.lastPage)
     }
     
     func beginSearch() {
@@ -115,6 +126,7 @@ extension SearchTableVC: SearchPresenterProtocol {
         loadingIndicator.stopAnimating()
         tableView.reloadData()
     }
+    
     
 }
 
@@ -140,7 +152,7 @@ extension SearchTableVC: UITableViewDelegate, UITableViewDataSource {
         cell.load(repo: repositories[indexPath.row])
         
         // Control page.
-        if  indexPath.row == Int(repositories.count * 3/4) {
+        if  indexPath.row == Int((repositories.count - 1) * 3/4) {
             presenter?.updatePagination()
         }
         return cell

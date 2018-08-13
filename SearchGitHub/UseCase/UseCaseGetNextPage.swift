@@ -32,8 +32,6 @@ class UseCaseGetNextPage {
                     repos.append(data)
                 })
                 
-                print("TOTAL repositorios en móvil: ",repos.count)
-                
                 completionHandler(repos)
             }
         }

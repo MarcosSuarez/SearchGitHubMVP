@@ -13,6 +13,7 @@ protocol SearchPresenterProtocol {
     func finishSearch()
     func resultFor(repositories: [DataClient])
     func nextPage(repositories: [DataClient])
+    //func getPages()
 }
 
 class SearchPresenter {
@@ -34,7 +35,11 @@ class SearchPresenter {
             return
         }
         
-        UseCaseGetNewRepo(withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
+        let repo = RepositoryNetwork()
+        let model = SearchGitHubModel(repository: repo)
+        let service = SearchService(modelo: model)
+        
+        UseCaseGetNewRepo(withServiceSearch: service, withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
             
             DispatchQueue.main.async {
                 self.delegate?.resultFor(repositories: arrayDataClient)

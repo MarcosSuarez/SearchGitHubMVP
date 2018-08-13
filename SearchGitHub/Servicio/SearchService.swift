@@ -10,28 +10,35 @@ import Foundation
 
 protocol SearchServiceProtocol {
     
+    var modelo: SearchGitHubModelProtocol {get set}
+    
     func search(searchTerm: String, filter: GHFilters, completionHandler: @escaping ((Transaction<[DataClient]?>) -> Void) )
     
     func nextPage(page: String, filter: GHFilters, completionHandler: @escaping (([DataClient]) -> Void))
 }
 
+// El servicio solicita la información al modelo.
 class SearchService {
-    init() { }
+    
+    var modelo: SearchGitHubModelProtocol
+    
+    init(modelo: SearchGitHubModelProtocol) {
+        self.modelo = modelo
+    }
 }
 
 extension SearchService: SearchServiceProtocol {
     
+    // Busca la información en el Modelo
     func search(searchTerm: String, filter: GHFilters, completionHandler: @escaping ((Transaction<[DataClient]?>) -> Void)) {
-       
-        let repository = RepositoryNetwork()
         
-        repository.textSearch = searchTerm
-        repository.filter = filter
+        modelo.network.filter = filter
+        modelo.network.textSearch = searchTerm
         
-        repository.get { (transaccionResult) in
-            completionHandler(transaccionResult)
+        modelo.get(termSearch: searchTerm, filter: filter) { (transaccionRecibida) in
+            // Envío la transacción al UseCase
+            completionHandler(transaccionRecibida)
         }
-        
     }
     
     

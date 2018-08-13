@@ -8,16 +8,22 @@
 
 import Foundation
 
+protocol Repository {
+    
+    associatedtype T
+    
+    func get(completionHandler: @escaping (_ products: Transaction<T?>) -> ()) -> Void
+    
+    func clear() -> Void
+}
 
 class RepositoryNetwork {
     
     typealias T = [DataClient]
-    typealias R = Bool
     
     let api = APIGitHub.shared
     var textSearch: String = ""
     var filter: GHFilters = .none
-    
 }
 
 extension RepositoryNetwork: Repository {
@@ -26,21 +32,16 @@ extension RepositoryNetwork: Repository {
         
         print("Se está solicitando datos.")
         
+        // Solicitud de Datos a la API
         api.search(byText: textSearch, filter: filter) { (arrayDataGitHub) in
             
             // Convierto del modelo de Git al modelo de que requiere el presentador
             let arrayClient = arrayDataGitHub.map({ (dataGitHub) -> DataClient in
                 return DataClient(with: dataGitHub)
             })
-            
+            // Respuesta de Repository Network
             completionHandler( Transaction.success(arrayClient) )
         }
-    }
-    
-    func set(element: [DataClient], completionHandler: @escaping (Transaction<Bool?>) -> ()) {
-
-        print("se esta solicitando cambio de la data")
-        completionHandler( Transaction.success(true) )
     }
     
     func clear() {

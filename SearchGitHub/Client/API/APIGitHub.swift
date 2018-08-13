@@ -20,17 +20,6 @@ protocol ClientProtocol {
 class APIGitHub {
     
     static var shared = APIGitHub()
-
-    struct GHPagination {
-        
-        var nextPage:Int = 1
-        var nextURLpage: String = ""
-        
-        var previosPage:Int = 1
-        var previosURLpage: String = ""
-        
-        var lastPage:Int = 1
-    }
     
     private static let basePath = "https://api.github.com/"
     private static let searchRepo = "search/repositories?q="
@@ -110,9 +99,13 @@ extension APIGitHub: ClientProtocol {
         
         let textSearch = byText.replacingOccurrences(of: " ", with: "+")
         
-        guard let url = URL(string: APIGitHub.basePath + APIGitHub.searchRepo + textSearch + filter.rawValue) else { completion([]); return }
+        let urlString  = APIGitHub.basePath + APIGitHub.searchRepo + textSearch + filter.rawValue
+        
+        guard let url = URL(string: urlString) else { completion([]); return }
         
         APIGitHub.shared.isLoading = true
+        
+        resetPagination()
         
         URLSession.shared.dataTask(with: url) { (data:Data?, response: URLResponse?, error: Error?) in
             

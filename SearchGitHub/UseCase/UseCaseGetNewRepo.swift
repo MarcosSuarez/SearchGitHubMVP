@@ -12,21 +12,22 @@ class UseCaseGetNewRepo {
     
     private let searchTerm:String
     private let filter:GHFilters
+    private let service: SearchServiceProtocol
     
-    init(withSearchTerm searchTerm:String, withFilter: GHFilters) {
+    init(withServiceSearch: SearchServiceProtocol ,withSearchTerm searchTerm:String, withFilter: GHFilters) {
+        self.service = withServiceSearch
         self.searchTerm = searchTerm
         self.filter = withFilter
     }
     
     func execute(completionHandler: @escaping ( ([DataClient]) -> Void ) ) {
         
-        // Llama al servicio y espera su respuesta para propagarla
-        let servicio = SearchService()
-        
-        servicio.search(searchTerm: searchTerm, filter: filter, completionHandler: { (transaction) in
+        // Llama al servicio para pedir información.
+        service.search(searchTerm: searchTerm, filter: filter, completionHandler: { (transaction) in
             
-            switch transaction {
-                
+            // Envía la información al presenter.
+            switch transaction
+            {
             case .success(let data):
                 if let dataUnwrapped:[DataClient] = data {
                     completionHandler(dataUnwrapped) }                
