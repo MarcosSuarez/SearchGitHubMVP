@@ -13,7 +13,6 @@ protocol SearchPresenterProtocol {
     func finishSearch()
     func resultFor(repositories: [DataClient])
     func nextPage(repositories: [DataClient])
-    //func getPages()
 }
 
 class SearchPresenter {
@@ -21,9 +20,15 @@ class SearchPresenter {
     var delegate: SearchPresenterProtocol?
     
     var hasFilterProyects: Bool = false
+    let repo:RepositoryNetwork
+    let model:SearchGitHubModel
+    let service:SearchService
     
     init(withView: SearchPresenterProtocol) {
         self.delegate = withView
+        repo = RepositoryNetwork()
+        model = SearchGitHubModel(repository: repo)
+        service = SearchService(modelo: model)
     }
     
     func search(by text:String, filter: GHFilters) {
@@ -35,9 +40,7 @@ class SearchPresenter {
             return
         }
         
-        let repo = RepositoryNetwork()
-        let model = SearchGitHubModel(repository: repo)
-        let service = SearchService(modelo: model)
+        
         
         UseCaseGetNewRepo(withServiceSearch: service, withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
             
@@ -50,7 +53,7 @@ class SearchPresenter {
     
     func updatePagination() {
         
-        UseCaseGetNextPage().execute { (arrayClient) in
+        UseCaseGetNextPage(withServiceSearch: service).execute { (arrayClient) in
             
             DispatchQueue.main.async {
                 self.delegate?.nextPage(repositories: arrayClient)

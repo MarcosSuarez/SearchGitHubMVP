@@ -10,13 +10,30 @@ import Foundation
 
 class UseCaseGetNextPage {
     
-    init(){}
+    private let service: SearchServiceProtocol
+    
+    init(withServiceSearch: SearchServiceProtocol) {
+        self.service = withServiceSearch
+    }
     
     func execute(completionHandler: @escaping ([DataClient]) -> Void ) {
-    
+        
         // Llama al servicio SearchService y la respuesta la propaga.
         
-    var repos = [DataClient]()
+        service.nextPage { (transaction) in
+            // Envía la información al presenter.
+            switch transaction
+            {
+            case .success(let data):
+                if let dataUnwrapped:[DataClient] = data {
+                    completionHandler(dataUnwrapped) }
+            case .fail:
+                completionHandler([])
+            }
+        }
+        
+        /*
+        var repos = [DataClient]()
         
         // Control page.
         if !APIGitHub.shared.isLoading, APIGitHub.shared.pagination.nextPage < APIGitHub.shared.pagination.lastPage {
@@ -35,5 +52,6 @@ class UseCaseGetNextPage {
                 completionHandler(repos)
             }
         }
+        */
     }
 }

@@ -44,6 +44,20 @@ extension RepositoryNetwork: Repository {
         }
     }
     
+    func getNextPage(completionHandler: @escaping (Transaction<[DataClient]?>) -> ()) {
+        
+        let textSearch = api.getNextPage()
+        
+        api.search(byText: textSearch, filter: .none) { (arrayDataGitHub) in
+            // Convierto del modelo de Git al modelo de que requiere el presentador
+            let arrayClient = arrayDataGitHub.map({ (dataGitHub) -> DataClient in
+                return DataClient(with: dataGitHub)
+            })
+            // Respuesta de Repository Network
+            completionHandler( Transaction.success(arrayClient) )
+        }
+    }
+    
     func clear() {
         print("Se solicitó un clear")
     }

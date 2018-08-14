@@ -14,6 +14,8 @@ protocol SearchGitHubModelProtocol {
     var network: RepositoryNetwork {get set}
     
     func get(termSearch: String, filter: GHFilters, completionHandler: @escaping (Transaction<[DataClient]?>) -> () )
+    
+    func getNextPage(completionHandler: @escaping (Transaction<[DataClient]?>) -> ())
 }
 
 class SearchGitHubModel {
@@ -26,6 +28,14 @@ class SearchGitHubModel {
 }
 
 extension SearchGitHubModel: SearchGitHubModelProtocol {
+    
+    
+    func getNextPage(completionHandler: @escaping (Transaction<[DataClient]?>) -> ()) {
+        // TODO: - buscar en el modelo la información.
+        self.network.getNextPage { (transaction) in
+            completionHandler(transaction)
+        }
+    }
 
     func get(termSearch: String, filter: GHFilters, completionHandler: @escaping (Transaction<[DataClient]?>) -> ()) {
        

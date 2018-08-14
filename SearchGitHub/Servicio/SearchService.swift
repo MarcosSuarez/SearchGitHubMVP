@@ -14,7 +14,7 @@ protocol SearchServiceProtocol {
     
     func search(searchTerm: String, filter: GHFilters, completionHandler: @escaping ((Transaction<[DataClient]?>) -> Void) )
     
-    func nextPage(page: String, filter: GHFilters, completionHandler: @escaping (([DataClient]) -> Void))
+    func nextPage(completionHandler: @escaping ((Transaction<[DataClient]?>) -> Void))
 }
 
 // El servicio solicita la información al modelo.
@@ -41,8 +41,10 @@ extension SearchService: SearchServiceProtocol {
         }
     }
     
-    
-    func nextPage(page: String, filter: GHFilters, completionHandler: @escaping (([DataClient]) -> Void)) {
+    func nextPage(completionHandler: @escaping ((Transaction<[DataClient]?>) -> Void)) {
         
+        modelo.getNextPage { (transaction ) in
+            completionHandler(transaction)
+        }
     }
 }
