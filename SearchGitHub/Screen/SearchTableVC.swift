@@ -86,6 +86,16 @@ class SearchTableVC: UIViewController, SFSafariViewControllerDelegate {
         sender.tintColor = (isPressed) ? searchBar.tintColor : .white
         startSearch()
     }
+    
+    /// Crea un alertView indicando una incidencia.
+    func alertView(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let btnOK = UIAlertAction(title: "OK", style: .default)
+        
+        alert.addAction(btnOK)
+        self.present(alert, animated: true, completion: nil)
+    }
 }
 
 extension SearchTableVC: SearchPresenterProtocol {

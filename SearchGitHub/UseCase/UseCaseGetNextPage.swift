@@ -18,8 +18,6 @@ class UseCaseGetNextPage {
     
     func execute(completionHandler: @escaping ([DataClient]) -> Void ) {
         
-        // Llama al servicio SearchService y la respuesta la propaga.
-        
         service.nextPage { (transaction) in
             // Envía la información al presenter.
             switch transaction
@@ -31,27 +29,5 @@ class UseCaseGetNextPage {
                 completionHandler([])
             }
         }
-        
-        /*
-        var repos = [DataClient]()
-        
-        // Control page.
-        if !APIGitHub.shared.isLoading, APIGitHub.shared.pagination.nextPage < APIGitHub.shared.pagination.lastPage {
-            // add new page
-            let searchTerm = APIGitHub.shared.getNextPage()
-            
-            APIGitHub.shared.search(byText: searchTerm, filter: .none) { (nextRepositories) in
-                
-                print("total nuevos repositorios Agregados: ", nextRepositories.count)
-                
-                nextRepositories.forEach({ (repository) in
-                    let data = DataClient(with: repository)
-                    repos.append(data)
-                })
-                
-                completionHandler(repos)
-            }
-        }
-        */
     }
 }
