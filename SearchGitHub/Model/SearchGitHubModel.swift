@@ -9,7 +9,7 @@
 import Foundation
 
 
-protocol SearchGitHubModelProtocol {
+protocol SearchModelProtocol {
 
     var network: RepositoryNetwork {get set}
     
@@ -27,7 +27,7 @@ class SearchGitHubModel {
     }
 }
 
-extension SearchGitHubModel: SearchGitHubModelProtocol {
+extension SearchGitHubModel: SearchModelProtocol {
     
     
     func getNextPage(completionHandler: @escaping (Transaction<[DataClient]?>) -> ()) {

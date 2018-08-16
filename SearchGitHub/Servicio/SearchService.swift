@@ -10,7 +10,7 @@ import Foundation
 
 protocol SearchServiceProtocol {
     
-    var modelo: SearchGitHubModelProtocol {get set}
+    var modelo: SearchModelProtocol {get set}
     
     func search(searchTerm: String, filter: GHFilters, completionHandler: @escaping ((Transaction<[DataClient]?>) -> Void) )
     
@@ -20,9 +20,9 @@ protocol SearchServiceProtocol {
 // El servicio solicita la información al modelo.
 class SearchService {
     
-    var modelo: SearchGitHubModelProtocol
+    var modelo: SearchModelProtocol
     
-    init(modelo: SearchGitHubModelProtocol) {
+    init(modelo: SearchModelProtocol) {
         self.modelo = modelo
     }
 }

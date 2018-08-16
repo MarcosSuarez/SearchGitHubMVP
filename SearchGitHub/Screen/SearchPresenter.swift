@@ -20,6 +20,7 @@ class SearchPresenter {
     var delegate: SearchPresenterProtocol?
     
     var hasFilterProyects: Bool = false
+    
     let repo:RepositoryNetwork
     let model:SearchGitHubModel
     let service:SearchService

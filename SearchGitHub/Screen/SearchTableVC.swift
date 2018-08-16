@@ -103,7 +103,7 @@ extension SearchTableVC: SearchPresenterProtocol {
     func nextPage(repositories: [DataClient]) {
         self.repositories += repositories
         
-        print("TOTAL repositorios en móvil: ",repositories.count)
+        print("TOTAL repositorios en móvil: ",self.repositories.count)
         
         print("página Anterior", APIGitHub.shared.pagination.previosPage)
         print("página Siguiente", APIGitHub.shared.pagination.nextPage)
@@ -113,7 +113,8 @@ extension SearchTableVC: SearchPresenterProtocol {
     
     func resultFor(repositories: [DataClient]) {
         self.repositories += repositories
-        print("TOTAL repositorios en móvil: ",repositories.count)
+        
+        print("TOTAL repositorios en móvil: ",self.repositories.count)
         
         print("página Anterior", APIGitHub.shared.pagination.previosPage)
         print("página Siguiente", APIGitHub.shared.pagination.nextPage)
@@ -121,6 +122,7 @@ extension SearchTableVC: SearchPresenterProtocol {
     }
     
     func beginSearch() {
+        
         print("Se inicio la busqueda")
         searchBar.showsCancelButton = false
         searchBar.resignFirstResponder()
@@ -131,6 +133,7 @@ extension SearchTableVC: SearchPresenterProtocol {
     }
     
     func finishSearch() {
+        
         print("Finalizó la busqueda")
         loadingIndicator.isHidden = true
         loadingIndicator.stopAnimating()
