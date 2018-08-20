@@ -28,6 +28,7 @@
 		8D1E3949211D711D0096F841 /* SearchGitHubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D1E3948211D711D0096F841 /* SearchGitHubModel.swift */; };
 		8D3EF238211B17C900D95DFA /* UseCaseGetNewRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3EF237211B17C900D95DFA /* UseCaseGetNewRepo.swift */; };
 		8D3EF23A211B21AA00D95DFA /* UseCaseGetNextPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D3EF239211B21AA00D95DFA /* UseCaseGetNextPage.swift */; };
+		8D670939212A981900BC6F15 /* Injectors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D670938212A981900BC6F15 /* Injectors.swift */; };
 		8DF429C72121A84F00839766 /* Pagination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DF429C62121A84F00839766 /* Pagination.swift */; };
 /* End PBXBuildFile section */
 
@@ -76,6 +77,7 @@
 		8D1E3948211D711D0096F841 /* SearchGitHubModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGitHubModel.swift; sourceTree = "<group>"; };
 		8D3EF237211B17C900D95DFA /* UseCaseGetNewRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseGetNewRepo.swift; sourceTree = "<group>"; };
 		8D3EF239211B21AA00D95DFA /* UseCaseGetNextPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UseCaseGetNextPage.swift; sourceTree = "<group>"; };
+		8D670938212A981900BC6F15 /* Injectors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Injectors.swift; sourceTree = "<group>"; };
 		8DF429C62121A84F00839766 /* Pagination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pagination.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -174,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				1727219120FFB319000216E7 /* Extension.swift */,
+				8D670938212A981900BC6F15 /* Injectors.swift */,
 				8D1E1607211C4307002F9E90 /* Helpers.swift */,
 			);
 			path = Common;
@@ -384,6 +387,7 @@
 				8D1E3949211D711D0096F841 /* SearchGitHubModel.swift in Sources */,
 				8D3EF23A211B21AA00D95DFA /* UseCaseGetNextPage.swift in Sources */,
 				8D1E160C211C6EBA002F9E90 /* Filter.swift in Sources */,
+				8D670939212A981900BC6F15 /* Injectors.swift in Sources */,
 				17D2A7A520FCA85100EBA290 /* AppDelegate.swift in Sources */,
 				8D1E1608211C4307002F9E90 /* Helpers.swift in Sources */,
 				8D1E1604211C411A002F9E90 /* RepositoryNetwork.swift in Sources */,

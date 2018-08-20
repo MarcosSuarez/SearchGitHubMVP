@@ -21,15 +21,15 @@ class SearchPresenter {
     
     var hasFilterProyects: Bool = false
     
-    let repo:RepositoryNetwork
-    let model:SearchGitHubModel
-    let service:SearchService
+//    let repo:RepositoryNetwork
+//    let model:SearchGitHubModel
+//    let service:SearchService
     
     init(withView: SearchPresenterProtocol) {
         self.delegate = withView
-        repo = RepositoryNetwork()
-        model = SearchGitHubModel(repository: repo)
-        service = SearchService(modelo: model)
+//        repo = RepositoryNetwork()
+//        model = SearchGitHubModel(repository: repo)
+//        service = SearchService(modelo: model)
     }
     
     func search(by text:String, filter: GHFilters) {
@@ -43,7 +43,7 @@ class SearchPresenter {
         
         
         
-        UseCaseGetNewRepo(withServiceSearch: service, withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
+        UseCaseGetNewRepo(withServiceSearch: Injectors.share.service, withSearchTerm: text, withFilter: filter).execute { (arrayDataClient) in
             
             DispatchQueue.main.async {
                 self.delegate?.resultFor(repositories: arrayDataClient)
@@ -54,7 +54,7 @@ class SearchPresenter {
     
     func updatePagination() {
         
-        UseCaseGetNextPage(withServiceSearch: service).execute { (arrayClient) in
+        UseCaseGetNextPage(withServiceSearch: Injectors.share.service).execute { (arrayClient) in
             
             DispatchQueue.main.async {
                 self.delegate?.nextPage(repositories: arrayClient)
